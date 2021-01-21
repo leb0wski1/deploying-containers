@@ -1,0 +1,20 @@
+proxy:
+  image: identiproxy:0.1
+  links:
+    - identidock
+  ports:
+    - "80:80"
+identidock:
+  extends:
+    file: common.yml
+    service: identidock
+  environment:
+    ENV: PROD
+dnmonster:
+  extends:
+    file: common.yml
+    service: dnmonster
+redis:
+  extends:
+    file: common.yml
+    service: redis
