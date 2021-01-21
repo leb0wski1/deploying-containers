@@ -5,16 +5,13 @@ proxy:
   ports:
     - "80:80"
 identidock:
-  extends:
-    file: common.yml
-    service: identidock
+  image: lebowski1/identidock:newest
+  links:
+    - dnmonster
+    - redis
   environment:
     ENV: PROD
 dnmonster:
-  extends:
-    file: common.yml
-    service: dnmonster
+  image: amouat/dnmonster:1.0
 redis:
-  extends:
-    file: common.yml
-    service: redis
+  image: redis
